@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-size: 28px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            z-index: 1;
+            width: 100%;
+            background-color: #f1f1f1;
+        }
+
+        .header h2 {
+            text-align: center;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #ccc;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #f91500;
+            position: absolute;
+            z-index: 10000;
+            width: 0%;
+
+        }
+
+        .content {
+            padding: 100px 0;
+            margin: 50px auto 0 auto;
+            width: 80%;
+        }
+
+        .carousel-caption {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding-bottom: 20%;
+            /* position: absolute;
+    right: 15%;
+    bottom: 10.25rem;
+    left: 15%;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    color: #fff;
+    text-align: center; */
+        }
+
+        .carousel-item {
+            position: relative;
+            display: none;
+            float: left;
+            width: 100%;
+            max-height: 90vh;
+            margin-right: -100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transition: transform .6s ease-in-out;
+        }
+
+        /* icons design start */
+
+        .icon-bar {
+            position: fixed;
+            top: 60%;
+            right: 5px;
+            z-index: 100;
+            transform: translateY(-50%);
+        }
+
+        .icon-bar a {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 20px;
+        }
+
+        .icon-bar a:hover {
+            background-color: #000;
+        }
+
+        .facebook {
+            background: #3B5998;
+            color: white;
+        }
+
+        .twitter {
+            background: #55ACEE;
+            color: white;
+        }
+
+        .google {
+            background: #dd4b39;
+            color: white;
+        }
+
+        .linkedin {
+            background: #007bb5;
+            color: white;
+        }
+
+        .youtube {
+            background: #bb0000;
+            color: white;
+        }
+
+        /* icons design end */
+
+        /* main header */
+        .main-header {
+            height: 10vh;
+            width: 100%;
+            background: linear-gradient(rgb(5, 46, 198), rgb(7, 61, 208));
+            display: flex;
+            align-items: center;
+            /* justify-content: space-between; */
+            font-size: 20px;
+            margin: auto;
+        }
+
+        .main-header2 {
+            height: 8vh;
+            width: 80%;
+            /* background: linear-gradient(rgb(5, 46, 198),rgb(7, 61, 208)); */
+            background-color: #1221f0;
+            display: flex;
+            color: white;
+            padding-top: 10px;
+            align-items: center;
+            justify-content: space-between;
+            margin: auto;
+
+        }
+
+        .main-header button {
+            margin-top: 7px;
+            border: none;
+            background-color: rgb(251, 3, 242);
+            color: white;
+            padding: 9px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            /* border-radius: 10px; */
+            height: 90%;
+        }
+
+        .blink {
+            animation: blink-animation 1s steps(5, start) infinite;
+        }
+
+        @keyframes blink-animation {
+
+            0%,
+            100% {
+                opacity: 1;
+                /* Fully visible */
+            }
+
+            50% {
+                opacity: 0;
+                /* Invisible */
+            }
+        }
+
+        /* box start */
+
+        .tablink {
+            background-color: #555;
+            color: white;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            font-size: 17px;
+            width: 25%;
+        }
+
+        .tablink:hover {
+            background-color: #777;
+        }
+
+        .bg-pink {
+            background: rgb(226, 1, 247);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 5px 5px 5px black;
+        }
+
+        */
+        /* Style the tab content */
+
+
+        /* banner start */
+
+        /* banner */
+
+        /* banner */
+
+        .banner {
+            margin-top: 30px;
+            height: 60vh;
+            width: 100%;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-image: linear-gradient(rgba(125, 228, 16, 0.3), rgba(17, 237, 229, 0.3)), url(./complex-aerial-view-city.jpg);
+        }
+
+        .banner-item {
+            text-align: center;
+            /* width: 300px; */
+            width: auto;
+            display: flex;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            flex-direction: column;
+            padding: 5px;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            margin: auto;
+            /* color: black; */
+
+            border-radius: 15px;
+            backdrop-filter: blur(3px);
+        }
+
+
+        /* next banner start*/
+
+        .banner-details {
+
+            width: 100%;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            padding: 3% 5%;
+            background-size: 100%;
+            background-position: center;
+            /* background-color: #f5f5f5; */
+            background-image: linear-gradient(rgba(51, 52, 50, 0.3), rgba(55, 57, 57, 0.3)), url(./banner.image3.jpg);
+            /* background: #F47920; */
+
+            color: white;
+        }
+
+        .banner-heading {
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .banner-part {
+            display: flex;
+            flex-direction: row;
+            backdrop-filter: blur(5px);
+
+
+        }
+
+        .banner-part1 {
+            border-right: 1px solid rgb(245, 85, 5);
+            border-left: 1px solid rgb(252, 93, 1);
+            margin-top: 20px;
+            padding: 10px;
+
+        }
+
+        .aaa {
+            margin-top: 20px;
+            /* background-color: #F47920; */
+            border: none;
+            outline: none;
+            padding: 10px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        @media (max-width:1025px) {
+            .banner-part {
+                display: flex;
+                flex-direction: column;
+
+
+            }
+        }
+
+        /* my portfolio */
+
+        .container-fluid2 {
+            min-height: 100vh;
+            display: flex;
+
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 20px;
+            background: linear-gradient(to right, #e209f1, #0f2dd8);
+            /* background-color: palevioletred; */
+
+        }
+
+        .left-text {
+            flex-basis: 30%;
+            display: flex;
+            flex-direction: column;
+
+
+        }
+
+        .gallery {
+            flex-basis: 50%;
+
+        }
+
+        .heading {
+            font-size: 3rem;
+            color: whitesmoke;
+            text-align: center;
+        }
+
+        .subheading {
+            color: #ddd;
+            margin-top: 10px;
+            text-align: center;
+
+        }
+
+        .gallery {
+            flex-basis: 50%;
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 120px;
+
+        }
+
+        .box12 {
+            background-size: cover;
+            background-position: top;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #222;
+            /* background-blend-mode: screen; */
+            transition: all 1s ease-in;
+
+        }
+
+        .box12:hover {
+            transform: scale(1.1);
+        }
+
+        #box1 {
+            grid-column: span 1/2;
+            grid-row: spna 2/1;
+        }
+
+        #box2 {
+            grid-column: 2/5;
+            background-size: 100%;
+        }
+
+        #box3 {
+            grid-column: 2/2;
+
+        }
+
+        #box4 {
+            grid-column: 3/5;
+            grid-row: 2/4;
+        }
+
+        #box5 {
+            grid-column: span 2/3;
+            background-position: center;
+        }
+
+        #box7 {
+            grid-column: 2/5;
+        }
+
+        .container-fluid2 button {
+            width: 250px;
+            margin: auto;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width:800px) {
+
+            .container-fluid2 {
+                padding: 20px 20px;
+                display: block;
+            }
+        }
+
+        /* benner */
+        .benner {
+            min-height: 90vh;
+            width: 100%;
+            margin-top: 40px;
+            /* background-image: url(./banner.image2.avif); */
+            background-repeat: no-repeat;
+            background-color: black;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+
+        }
+
+        .jjj {
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 10%;
+            gap: 20px;
+            /* background-color: #007bb5; */
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        /* marque tag */
+
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            width: 100%;
+            background: #f8f9fa;
+            /* Background color */
+        }
+
+        .marquee-inner {
+            display: inline-block;
+            animation: marquee 15s linear infinite;
+        }
+
+        .marquee img {
+            width: 200px;
+            /* Adjust image width as needed */
+            margin: 0 15px;
+            /* Space between images */
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+
+        /* marque tag end */
+
+        .contuctus a {
+            color: white;
+        }
+
+        .header2 {
+            width: 100%;
+            height: 6vh;
+            background-color: #F47920;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            justify-content: space-between;
+            padding: 0px 10px;
+
+        }
+
+        .ddd {
+            padding-right: 2rem;
+            display: flex;
+            gap: 15px;
+            font-size: 25px;
+        }
+
+        .ddd1:hover {
+            color: red;
+        }
+
+        .ddd2:hover {
+            color: red;
+        }
+
+        .ddd3:hover {
+            color: red;
+        }
+
+        .iii {
+
+            color: white;
+
+        }
+
+        .iii2 {
+
+            color: rgb(0, 0, 0);
+
+        }
+
+        .kkk {
+            /* background-color: #6a6a6a; */
+            align-items: center;
+            color: #000;
+            height: 100%;
+            display: flex;
+            padding: 0px 1rem;
+        }
+
+        .kkk p {
+            margin: auto;
+            color: white;
+            font-size: 15px;
+        }
+
+        .kkk a {
+            color: white;
+            padding: 5px;
+        }
+
+        @media (min-width:600px) {
+            .contuctus {
+                display: none;
+            }
+
+            .contuctus a {
+                color: white;
+            }
+        }
+
+        @media (max-width:600px) {
+            .kkk {
+                display: none;
+            }
+
+            .header2 {
+                width: 100%;
+                height: 6vh;
+                background-color: #F47920;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                justify-content: center;
+
+                padding: 0px 10px;
+
+            }
+
+            .hhhh {
+                height: 12px;
+            }
+
+            .ddd {
+                display: none;
+            }
+        }
+
+        /* header start */
+        .header-5 {
+            width: 100%;
+            height: 90vh;
+            background-image: url(./banner.image1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+
+        }
+
+        .header55 {
+            /* width: 400px; */
+            /* filter: blur(1px); */
+            align-items: center;
+            text-align: center;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+
+
+        }
+
+        /* CSS button design */
+        .button-63 {
+            align-items: center;
+            background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+            border: 0;
+            border-radius: 8px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            display: flex;
+            font-family: Phantomsans, sans-serif;
+            font-size: 20px;
+            justify-content: center;
+            line-height: 1em;
+            max-width: 100%;
+            min-width: 140px;
+            padding: 19px 24px;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            cursor: pointer;
+            box-shadow: 3px 3px 3px;
+
+        }
+
+
+        .button-63:hover {
+            box-shadow: none;
+        }
+
+        @media (min-width: 768px) {
+            .button-63 {
+                font-size: 24px;
+                min-width: 196px;
+            }
+        }
+
+
+        .flip-card {
+            background-color: transparent;
+            width: 300px;
+            height: 300px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+            background-color: #bbb;
+            color: black;
+        }
+
+        .flip-card-back {
+            background-color: #2980b9;
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        /* card design */
+
+        .card {
+            width: 300px;
+            height: 200px;
+            background-color: #4158D0;
+            background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            border-radius: 8px;
+            color: white;
+            overflow: hidden;
+
+            position: relative;
+            transform-style: preserve-3d;
+            margin: auto;
+            perspective: 1000px;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            cursor: pointer;
+        }
+
+        .card-content {
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            color: white;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        .card-content .card-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: inherit;
+            text-transform: uppercase;
+        }
+
+        .card-content .card-para {
+            color: inherit;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        .card:hover {
+            transform: rotateY(10deg) rotateX(10deg) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.1));
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            z-index: 1;
+        }
+
+        .card:hover:before {
+            transform: translateX(-100%);
+        }
+
+        .card:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.1));
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            z-index: 1;
+        }
+
+        .card:hover:after {
+            transform: translateX(100%);
+        }
+
+        /* switch */
+        .switch {
+            font-size: 17px;
+            position: relative;
+            display: inline-block;
+            width: 3.5em;
+            height: 2em;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .slider {
+            --background: #28096b;
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--background);
+            transition: .5s;
+            border-radius: 30px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 1.4em;
+            width: 1.4em;
+            border-radius: 50%;
+            left: 10%;
+            bottom: 15%;
+            box-shadow: inset 8px -4px 0px 0px #fff000;
+            background: var(--background);
+            transition: .5s;
+        }
+
+        input:checked+.slider {
+            background-color: #522ba7;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(100%);
+            box-shadow: inset 15px -4px 0px 15px #fff000;
+        }
+
+        /* kai card design */
+
+        .ag-format-container {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+
+        .ag-courses_box {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+
+            padding: 50px 0;
+        }
+
+        .ag-courses_item {
+            -ms-flex-preferred-size: calc(33.33333% - 30px);
+            flex-basis: calc(33.33333% - 30px);
+
+            margin: 0 15px 30px;
+
+            overflow: hidden;
+
+            border-radius: 28px;
+        }
+
+        .ag-courses-item_link {
+            display: block;
+            padding: 30px 20px;
+            background-color: #121212;
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .ag-courses-item_link:hover,
+        .ag-courses-item_link:hover .ag-courses-item_date {
+            text-decoration: none;
+            color: #FFF;
+        }
+
+        .ag-courses-item_link:hover .ag-courses-item_bg {
+            -webkit-transform: scale(10);
+            -ms-transform: scale(10);
+            transform: scale(10);
+        }
+
+        .ag-courses-item_title {
+            min-height: 87px;
+            margin: 0 0 25px;
+
+            overflow: hidden;
+
+            font-weight: bold;
+            font-size: 30px;
+            color: #FFF;
+
+            z-index: 2;
+            position: relative;
+        }
+
+        .ag-courses-item_date-box {
+            font-size: 18px;
+            color: #FFF;
+
+            z-index: 2;
+            position: relative;
+        }
+
+        .ag-courses-item_date {
+            font-weight: bold;
+            color: #f9b234;
+
+            -webkit-transition: color .5s ease;
+            -o-transition: color .5s ease;
+            transition: color .5s ease
+        }
+
+        .ag-courses-item_bg {
+            height: 128px;
+            width: 128px;
+            background-color: #f9b234;
+
+            z-index: 1;
+            position: absolute;
+            top: -75px;
+            right: -75px;
+
+            border-radius: 50%;
+
+            -webkit-transition: all .5s ease;
+            -o-transition: all .5s ease;
+            transition: all .5s ease;
+        }
+
+        .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+            background-color: #3ecd5e;
+        }
+
+        .ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+            background-color: #e44002;
+        }
+
+        .ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+            background-color: #952aff;
+        }
+
+        .ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+            background-color: #cd3e94;
+        }
+
+        .ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+            background-color: #4c49ea;
+        }
+
+
+
+        @media only screen and (max-width: 979px) {
+            .ag-courses_item {
+                -ms-flex-preferred-size: calc(50% - 30px);
+                flex-basis: calc(50% - 30px);
+            }
+
+            .ag-courses-item_title {
+                font-size: 24px;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+            .ag-format-container {
+                width: 96%;
+            }
+
+        }
+
+        @media only screen and (max-width: 639px) {
+            .ag-courses_item {
+                -ms-flex-preferred-size: 100%;
+                flex-basis: 100%;
+            }
+
+            .ag-courses-item_title {
+                min-height: 72px;
+                line-height: 1;
+
+                font-size: 24px;
+            }
+
+            .ag-courses-item_link {
+                padding: 22px 40px;
+            }
+
+            .ag-courses-item_date-box {
+                font-size: 16px;
+            }
+        }
+
+        /* text design */
+
+        svg {
+            font-family: "Russo One", sans-serif;
+            width: 100%;
+            height: 100%;
+        }
+
+        svg text {
+            animation: stroke 5s infinite alternate;
+            stroke-width: 2;
+            stroke: #1014A0;
+            font-size: 100px;
+        }
+
+        @keyframes stroke {
+            0% {
+                fill: rgba(174, 204, 12, 0);
+                stroke: rgba(16, 20, 160, 1);
+                stroke-dashoffset: 25%;
+                stroke-dasharray: 0 50%;
+                stroke-width: 2;
+            }
+
+            70% {
+                fill: rgba(174, 204, 12, 0);
+                stroke: rgba(16, 20, 160, 1);
+            }
+
+            80% {
+                fill: rgba(174, 204, 12, 0);
+                stroke: rgba(16, 20, 160, 1);
+                stroke-width: 3;
+            }
+
+            100% {
+                fill: rgba(174, 204, 12, 1);
+                stroke: rgba(16, 20, 160, 0);
+                stroke-dashoffset: -25%;
+                stroke-dasharray: 50% 0;
+                stroke-width: 0;
+            }
+        }
+
+        .wrapper {
+            background-color: #FFFFFF
+        }
+
+        ;
+
+
+
+
+        /* best it services company */
+
+        .praksh {
+            background-image: url(./symbol/wave-haikei\ \(2\).png);
+            width: 100%;
+            height: 40vh;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+
+        }
+
+        .ag-courses_item {
+
+            box-shadow: 5px 5px 5px white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- scroll line start -->
+
+    <div class="header">
+        <h2></h2>
+        <div class="progress-container">
+            <div class="progress-bar" id="myBar"></div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="main-header2">
+            <div class="kkk">
+                <a href="abc@gmail.com"> <i class="fa-solid fa-envelope "></i></a>
+
+                <p class=" "> <a href="abc@gmail.com" class="iii">abc@gmail.com</a></p>
+                <a href="tel:+ 99999999999"> <i class="fa-solid fa-mobile-retro"></i></a>
+                <p class=" "> <a href="tel: 99999999999" class="iii"> 99999999999</a></p>
+            </div>
+            <div class="contuctus">
+                Contact Us: &nbsp;&nbsp;
+                <a href="tel: 99999999999"> <i class="fa-solid fa-mobile-retro"></i></a>&nbsp;&nbsp;&nbsp;
+                <a href="abc@gmail.com"> <i class="fa-solid fa-envelope "></i></a>
+
+            </div>
+            <button class="blink" style="color: white;"> <a href="./enquary.html"
+                    style="color: white;">Enquary</a></button>
+        </div>
+
+    </div>
+
+    <!-- scroll line end -->
+
+    <!-- start icon -->
+
+    <div class="icon-bar">
+        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="google"><i class="fa fa-google"></i></a>
+        <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+        <a href="#" class="youtube"><i class="fa fa-youtube"></i></a>
+    </div>
+    <!-- icons end -->
+
+
+
+    <!--  bootstap navbar start -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid jjj">
+            <a class="navbar-brand" href="#">Navbar</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./Aboutus.html">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" data-bs-auto-close="outside" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item dropdown-toggle active" data-bs-toggle="dropdown" href="#">Web
+                                    Design</a>
+                                <ul class="dropdown-menu ">
+                                    <li><a class="dropdown-item" href="responsive.html">Responsive</a></li>
+                                    <li><a class="dropdown-item" href="Ecommerce.html">Ecommerce</a></li>
+                                    <li><a class="dropdown-item" href="Landing Page.html">Landing Page</a></li>
+                                    <li><a class="dropdown-item" href="Portal.html">Portal</a></li>
+                                    <li><a class="dropdown-item" href="Corporate.html">Corporate</a></li>
+                                    <li><a class="dropdown-item" href="CMS-Theme.html">CMS Theme</a></li>
+                                    <li><a class="dropdown-item" href="Template.html">Template</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item dropdown-toggle active" data-bs-toggle="dropdown"
+                                    href="#">Development</a>
+                                <ul class="dropdown-menu ">
+                                    <li><a class="dropdown-item" href="Web-Application.html">Web Application</a></li>
+                                    <li><a class="dropdown-item" href="Custom-Web.html">Custom Web</a></li>
+                                    <li><a class="dropdown-item" href="Software.html">Software</a></li>
+                                    <li><a class="dropdown-item" href="Ecommerce.html">Ecommerce</a></li>
+                                    <li><a class="dropdown-item" href="Mobile-App.html">Mobile App</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item dropdown-toggle active" data-bs-toggle="dropdown" href="#">Web
+                                    Hosting</a>
+                                <ul class="dropdown-menu ">
+                                    <li><a class="dropdown-item" href="Windows-Hosting.html">Windows Hosting</a></li>
+                                    <li><a class="dropdown-item" href="Windows-Reseller.html">Windows Reseller</a></li>
+                                    <li><a class="dropdown-item" href="Linux-Hosting.html">Linux Hosting</a></li>
+                                    <li><a class="dropdown-item" href="Linux-Reseller.html">Linux Reseller</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item dropdown-toggle active" data-bs-toggle="dropdown"
+                                    href="#">Domains</a>
+                                <ul class="dropdown-menu ">
+                                    <li><a class="dropdown-item" href="Registration.html">Registration</a></li>
+                                    <li><a class="dropdown-item" href="Transfer.html">Transfer</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item dropdown-toggle active" data-bs-toggle="dropdown"
+                                    href="#">Security</a>
+                                <ul class="dropdown-menu ">
+                                    <li><a class="dropdown-item" href="DigicertsSSL.html">Digicerts/SSL</a></li>
+                                    <li><a class="dropdown-item" href="SiteLock.html">SiteLock</a></li>
+                                    <li><a class="dropdown-item" href="CodeGuard.html">CodeGuard</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Digital Marketing</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./socialmedia.html">Social Media Marketing</a></li>
+                            <li><a class="dropdown-item" href="searchengine.html">Search Engine Marketing</a></li>
+                            <li><a class="dropdown-item" href="mobilemarketing copy.html">Mobile Marketing</a></li>
+                            <li><a class="dropdown-item" href="emailmarketing.html">Email Marketing</a></li>
+                            <li><a class="dropdown-item" href="contactmarketing.html">Contact Marketing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="./Contact.html">Contact Us</a>
+                    </li>
+                    <li>
+                        <a href=""><label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- nav bar end -->
+
+
+
+    <!-- header start -->
+    <div class="header-5">
+        <div class="header55">
+            <h1>
+                Professional Ecommerce Website Development Company.
+            </h1>
+
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="./Types_of_Artificial_Intelligence.avif" alt="Avatar"
+                            style="width:300px;height:300px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>Jitesh </h1>
+                        <p>Web designer </p>
+                        <p>Web Developer</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="button-63">Discuss Your Work</button>
+
+
+        </div>
+
+    </div>
+
+
+
+
+    <!--  slider -->
+    <!-- <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./banner.image1.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h1>Professional Ecommerce Website Development Company</h1>
+              <p>Now sell anything from anywhere to anyone with a
+                360 degree solution from Intouch.</p>
+                <button class="bg-pink">Discuss Your Work</button>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="./banner.image.4.webp" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h1>Choose The Only Premium App Development Company</h1>
+              <p>Industry best practices to produce budget optimised
+                and brand driven mobile applications.</p>
+                <button class="bg-pink">Discuss Your Work</button>
+
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="./banner.image2.avif" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div> -->
+
+
+    <!-- next why choose us section -->
+
+    <div class="banner-details">
+
+        <div class="banner-heading">
+            <h1>WHY CHOOSE US</h1>
+        </div>
+
+        <div class="banner-part">
+
+            <div class="banner-part1 card">
+
+                <h4>* Everything In-House.</h4>
+                <h4> * Certified Experts.</h4>
+                <h4> * Customized, Growth-Oriented Plans for Every Type of Business.</h4>
+
+            </div>
+
+
+
+            <div class="banner-part1 card">
+
+                <h4>* Dedicated Account Managers.</h4>
+                <h4> * Client’s Satisfaction.</h4>
+                <h4> * On-Time Delivery.</h4>
+
+            </div>
+
+            <div class="banner-part1 card">
+
+                <h4> * Skilled Research Team.</h4>
+                <h4> * Complete Transparency.</h4>
+                <h4> * Performance Tracking.</h4>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <!-- next section -->
+    <div class="benner">
+
+
+
+        <div class="ag-format-container">
+            <div class="ag-courses_box">
+                <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+
+                        <div class="ag-courses-item_title">
+                            UI/Web&amp;Graph design for teenagers 11-17&#160;years old
+                        </div>
+
+                        <div class="ag-courses-item_date-box">
+                            Start:
+                            <span class="ag-courses-item_date">
+                                04.11.2022
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+
+                        <div class="ag-courses-item_title">
+                            UX/UI Web-Design&#160;+ Mobile Design
+                        </div>
+
+                        <div class="ag-courses-item_date-box">
+                            Start:
+                            <span class="ag-courses-item_date">
+                                04.11.2022
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+
+                        <div class="ag-courses-item_title">
+                            Annual package "Product+UX/UI+Graph designer&#160;2022"
+                        </div>
+
+                        <div class="ag-courses-item_date-box">
+                            Start:
+                            <span class="ag-courses-item_date">
+                                04.11.2022
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+
+                        <div class="ag-courses-item_title">
+                            Graphic Design
+                        </div>
+
+                        <div class="ag-courses-item_date-box">
+                            Start:
+                            <span class="ag-courses-item_date">
+                                04.11.2022
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+
+                        <div class="ag-courses-item_title">
+                            Motion Design
+                        </div>
+
+                        <div class="ag-courses-item_date-box">
+                            Start:
+                            <span class="ag-courses-item_date">
+                                30.11.2022
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+
+                        <div class="ag-courses-item_title">
+                            Front-end development&#160;+ jQuery&#160;+ CMS
+                        </div>
+                    </a>
+                </div>
+
+                <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg">
+                        </div>
+                        <div class="ag-courses-item_title">
+                            Digital Marketing
+                        </div>
+                    </a>
+                </div>
+
+                <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+
+                        <div class="ag-courses-item_title">
+                            Interior Design
+                        </div>
+
+                        <div class="ag-courses-item_date-box">
+                            Start:
+                            <span class="ag-courses-item_date">
+                                31.10.2022
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <!-- next -->
+    <div class="container-fluid2">
+        <div class="left-text">
+            <!-- <h2 class="heading">My Poratfolio</h2> -->
+            <div class="wrapper">
+                <svg>
+                    <text x="50%" y="50%" dy=".35em" text-anchor="middle">
+                        jitesh
+                    </text>
+                </svg>
+            </div>
+            <p class="subheading">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, facilis autem ad possimus
+                deleniti eos blanditiis dolorem perferendis debitis id officiis asperiores adipisci, maiores at odio
+                voluptatem recusandae eius obcaecati.</p>
+            <button>More Information</button>
+        </div>
+        <div class="gallery">
+            <div class="box12" id="box1"
+                style="background-image: url(https://plus.unsplash.com/premium_photo-1675827055694-010aef2cf08f?q=80&w=1912&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+                one</div>
+            <div class="box12" id="box2"
+                style="background-image: url(https://plus.unsplash.com/premium_photo-1675827055620-24d540e0892a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlfGVufDB8fDB8fHww);">
+                two</div>
+            <div class="box12" id="box3"
+                style="background-image: url(https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D);">
+                three</div>
+            <div class="box12" id="box4"
+                style="background-image: url(https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D);">
+                four</div>
+            <div class="box12" id="box5" style="background-image: url(./alex1.jpg);">five</div>
+            <div class="box12" id="box6"
+                style="background-image: url(https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D);">
+                six</div>
+            <div class="box12" id="box7"
+                style="background-image: url(https://plus.unsplash.com/premium_photo-1673292293042-cafd9c8a3ab3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D);">
+                seven</div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- next -->
+
+
+
+
+
+
+
+
+
+    <!-- footer -->
+
+    <div class="container-fluid  mt-5 text-white bg-primary   pt-5" id="Contact">
+        <div class="container lll">
+            <div class="parentsss d-grid">
+                <div class="row">
+
+                    <div class="childddd col-sm-6 col-lg-4">
+                        <h3>About Us</h3>
+                        <p class="fs-5">We like to make design and development the website with code .
+
+
+                        </p>
+                    </div>
+
+                    <div class="childddd col-sm-6 col-lg-4">
+                        <h3>Useful Links</h3>
+                        <ul class="fs-5">
+                            <li><a href="./Aboutus.html" class="text-white">About</a></li>
+                            <li><a href="./Contact.html" class="text-white">Contact Us</a></li>
+                            <li> <a href="./policy.html" class="text-white">Privacy Policy</a></li>
+                            <li> <a href="refund.html" class="text-white">Refund</a></li>
+                            <li> <a href="./term.html" class="text-white">Term Condition</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="childddd col-sm-6 col-lg-4">
+                        <h3>Contact Us </h3>
+                        <h5 class="fs-5">
+                            <i class="fa-solid fa-house"></i> 121 Wallstreet Street, Newyork, USA
+                            <br>
+                            <br>
+                            <i class="fa-solid fa-phone"></i> +1-123-456-7890
+                            <br>
+                            <br>
+                            <i class="fa-regular fa-envelope"></i> abc@gmail.com
+                        </h5>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="container-fluid bg-success">
+        <div class="container">
+        </div>
+    </div>
+
+    <div class="container-fluid bg-success text-white text-center ">
+        <div class="container d-flex fs-6  " style="height: 50px; align-items: center; justify-content: center;">
+            2015 &copy; All Right Reserved |Designed by Jitesh Kaushik
+        </div>
+    </div>
+
+
+
+    <!-- footer end -->
+
+
+    <!-- <-- boot -->
+
+
+    <!-- self -->
+    <script>
+        // When the user scrolls the page, execute myFunction 
+        window.onscroll = function () { myFunction() };
+
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+
+        // scond slide
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    
+</body >
+</html >
